@@ -1,4 +1,4 @@
-# Face detetion performance on occluded faces
+# Face detection performance on occluded faces
 
 ## Installation
 
