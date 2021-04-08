@@ -40,6 +40,23 @@ class FaceAnalysis:
                     copyfile(img, os.path.join(path_to_wrong_detections,amount_faces_detected+"_"+img.replace("/","_")))
         self.elapsed_time = time.time()-start
     
+    def get_amount_for(self, n):
+        try:
+            return self.errors[n]
+        except:
+            return 0
+        
+    def get_more_than_two(self):
+        ret = 0
+        for error in self.errors:
+            if error not in ["0","2"]:
+                ret += self.errors[error]
+        return ret
+    
+    def write_to_result_file(self):
+        with open("/home/user/result.txt", "a") as myfile:
+            myfile.write("{};{};{};{};{};{};{}\n".format(self.dataset.path, str(self.algorithm), self.amount_correct, self.get_amount_for("0"), self.get_amount_for("2"), self.get_more_than_two(), self.elapsed_time))
+    
     def __str__(self):
         ret = "{} images successfully detected.\n".format(self.amount_correct)
         for error in self.errors:

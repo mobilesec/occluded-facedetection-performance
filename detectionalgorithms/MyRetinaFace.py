@@ -17,3 +17,6 @@ class MyRetinaFace(FacedetectionInterface):
             if r[2] > 0.95:
                 amount_detected_faces += 1
         return(amount_detected_faces)
+    
+    def __str__(self):
+        return "retinaface"

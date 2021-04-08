@@ -10,3 +10,6 @@ class MyDLIB(FacedetectionInterface):
     def get_amount_faces_from_img(self, cv2_img) -> int:
         face_locations = face_recognition.face_locations(cv2_img)
         return(len(face_locations))
+    
+    def __str__(self):
+        return "dlib"
